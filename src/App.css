@@ -1,0 +1,20 @@
+:root {
+  --background-color: #1c3144;
+  --primary-color: #48f0ff;
+  --primary-color-darker: #48f0ff;
+  --secondary-color: #c6f91f;
+  --tertiary-color: #ff6ec7;
+  --heading-color: #c0c1c2;
+  --text-color: #ffffff;
+  --font-family: "Helvetica";
+  --heading-size: 18px;
+  --text-size: 16px;
+  --desktop-heading-size: 30px;
+  --desktop-text-size: 18px;
+  --header-size: 10vmax;
+}
+
+* {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+}

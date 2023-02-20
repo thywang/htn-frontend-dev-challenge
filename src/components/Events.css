@@ -1,0 +1,18 @@
+.events {
+    margin: 5%;
+    width: 90%;
+}
+
+.event-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#events-title {
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-weight: bolder;
+    font-size: var(--header-size);
+    text-shadow: 0 0 17px var(--primary-color);
+}
