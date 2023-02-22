@@ -31,15 +31,22 @@ function Events(props) {
     );
 }
 
-// Use this function to convert a unix timestamp to datetime
+/** 
+ * Use this function to convert a unix timestamp to datetime.
+ * 
+ * @param {Integer} unixTimestamp      A unix time stamp (ms).
+ */
 const convertTime = (unixTimestamp) => {
     const t = new Date(unixTimestamp);
     return { date: moment(t).format('ll'), time: moment(t).format('h:mm A') };
 };
 
-// Convert to all times in events to datetime
-
-// Use this function to organize list of events in order by start_time and add information for related events
+/** 
+ * Use this function to organize list of events in order by start_time 
+ * and add information for related events.
+ * 
+ * @param {Object} events      Array of TEvent.
+ */
 const organizeEvents = (events) => {
     // Sort in ascending time (in ms)
     const compareTime = (a, b) => {
@@ -79,7 +86,12 @@ const organizeEvents = (events) => {
     return organizedEvents;
 };
 
-// Use this function to filter through events based on if user is authed
+/** 
+ * Use this function to filter through events based on if user is authed.
+ * 
+ * @param {Object} events      Array of TEvent.
+ * @param {Object} isAuthed    If the user has been authenticated.
+ */
 const filterEventsByAuthentication = (events, isAuthed = false) => {
     let filteredEvents = events.filter((evt) => {
         return isAuthed ? evt : evt.permission === "public";

@@ -2,7 +2,7 @@ import React from 'react';
 import RelatedEvent from './RelatedEvent.js';
 import "./EventCard.css";
 
-export default function EventCard(item, key) {
+export default function EventCard(item) {
     const { event } = item;
     let { id, event_type, speakers } = event;
     let eventTypeId = "event-type-" + event_type;
