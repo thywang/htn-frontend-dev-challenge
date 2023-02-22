@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import "./RelatedEvent.css";
 
 export default function RelatedEvent(item, key) {
@@ -7,8 +8,8 @@ export default function RelatedEvent(item, key) {
     const { eventKey } = key;
 
     return (
-        <a href={"#event-" + relatedEvtID}>
+        <Link to={'#event-' + relatedEvtID}>
             <button class={"related-event " + relatedEvtType} key={"related-event-" + eventKey}>{relatedEvtName}</button>
-        </a>
+        </Link>
     );
 }

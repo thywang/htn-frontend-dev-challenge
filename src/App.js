@@ -9,10 +9,10 @@ function App() {
   const [isAuthed, setIsAuthed] = useState(false);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path='/' element={<Events isAuthed={isAuthed} />} />
-        <Route path='/login' element={<Login isAuthed={isAuthed} setIsAuthed={setIsAuthed} />} />
+        <Route exact path='/' element={<Events isAuthed={isAuthed} />} />
+        <Route exact path='/login' element={<Login isAuthed={isAuthed} setIsAuthed={setIsAuthed} />} />
       </Routes>
     </BrowserRouter>
 
