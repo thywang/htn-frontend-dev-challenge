@@ -23,8 +23,8 @@ export default function EventCard(item, key) {
                     <div><span className="heading">Time: </span>{event.start_time} to {event.end_time}</div>
                     {speakers.length > 0 ? <div><span className="heading">Speakers: </span>{speakers}</div> : ''}
                 </div>
-                {event.public_url !== "" ? <span><a className="link" href={event.public_url}>View Recording</a></span> : ''}
-                {event.private_url ? <button className="private-link-button"><a className="private-link" href={event.private_url}>Go to event</a></button> : ''}
+                {event.public_url !== "" ? <span><a className="link" href={event.public_url} target="_blank" rel="noreferrer noopener">View Recording</a></span> : ''}
+                {event.private_url ? <a className="private-link" href={event.private_url} target="_blank" rel="noreferrer noopener"><button className="private-link-button">Go to event</button></a> : ''}
                 {event.related_events.length > 0 ? <span className="heading">Related events:</span> : ''}
                 <div className="related-events">
                     {event.related_events.map((item, i) => {

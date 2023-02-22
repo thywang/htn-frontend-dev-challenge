@@ -59,12 +59,13 @@
 .private-link {
     color: var(--background-color);
     text-decoration: none;
-    font-size: var(--button-text-size);
-    font-weight: bold;
 }
 
 .private-link-button {
     box-shadow: var(--shadow-elevation-medium);
+    font-size: var(--button-text-size);
+    font-weight: bold;
+    width: 100%;
 }
 
 .related-events {
@@ -78,10 +79,10 @@
     h3 {
         font-size: var(--desktop-heading-size);
     }
-    .event-card, .private-link {
+    .event-card {
         font-size: var(--desktop-text-size);
     }
-    .private-link {
+    .private-link-button {
         font-size: var(--desktop-button-text-size);
     }
     .date-time-speakers {
