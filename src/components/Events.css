@@ -6,7 +6,6 @@
 .event-cards {
     display: flex;
     flex-direction: column;
-    gap: 30px;
 }
 
 #events-title {
@@ -15,4 +14,15 @@
     font-weight: bolder;
     font-size: var(--header-size);
     text-shadow: 0 0 17px var(--primary-color);
+}
+
+/* inherits from button class in Login.css */
+#login-button {
+    padding: 0.5em;
+    float: right;
+    font-size: var(--text-size);
+    color: var(--text-color);
+    text-shadow: 0 0 3px var(--primary-color);
+    background: var(--primary-color-dark);
+    box-shadow: 0 0 10px var(--primary-color-dark);
 }

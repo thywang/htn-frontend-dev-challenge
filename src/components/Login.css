@@ -1,0 +1,73 @@
+.page {
+    height: 100vh;
+    width: 100%;
+    color: var(--text-color);
+    gap: 5em;
+}
+
+.page, .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.login {
+    position: relative;
+    padding: 3.5rem;
+    background: linear-gradient(0deg, var(--background-color), #201f1f);
+    box-shadow: var(--shadow-elevation-high);
+    border-radius: 10px;
+}
+        
+@media only screen and (min-width: 768px) {
+    .login {
+        padding: 5rem;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label, .show-toggle {
+    text-align: left;
+    padding: 0.25rem 0;
+}
+
+input {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--background-color);
+    cursor: pointer;
+}
+
+@media (hover: hover) {
+    /* targets only devices that can hover */
+    button:hover {
+        filter: brightness(85%);
+    }  
+}
+
+/* inherits from button class in Login.css */
+#go-back-button {
+    padding: 0.5em;
+    position: absolute;
+    float: right;
+    font-size: var(--text-size);
+    color: var(--text-color);
+    text-shadow: 0 0 3px var(--primary-color);
+    background: var(--primary-color-dark);
+    box-shadow: 0 0 10px var(--primary-color-dark);
+}

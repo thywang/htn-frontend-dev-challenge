@@ -1,0 +1,19 @@
+.related-event {
+    padding: 10px;
+    color: var(--background-color);
+    font-size: var(--text-size);
+}
+
+/* event type tag colors */
+.related-event.activity {
+    background-color: var(--tertiary-color);
+    text-shadow: 0 0 3px var(--tertiary-color);
+}
+.related-event.tech_talk {
+    background-color: var(--secondary-color);
+    text-shadow: 0 0 3px var(--secondary-color);
+}
+.related-event.workshop {
+    background-color: var(--primary-color-darker);
+    text-shadow: 0 0 3px var(--primary-color-darker);
+}

@@ -1,30 +1,39 @@
 import React from 'react';
+import RelatedEvent from './RelatedEvent.js';
 import "./EventCard.css";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Button } from 'react-bootstrap';
 
-export default function EventCard(item) {
+export default function EventCard(item, key) {
     const { event } = item;
-    let { speakers } = event;
-    let eventTypeId = "event-type-" + event.event_type;
+    let { id, event_type, speakers } = event;
+    let eventTypeId = "event-type-" + event_type;
+    let eventKey = id;
 
     speakers = speakers.map((speaker, i) =>
         (i !== speakers.length - 1) ? <span>{speaker.name}, </span> : <span>{speaker.name} </span>
     );
 
     return (
-        <>
-            <div class="event-card">
-                <div class="event-type" id={eventTypeId}>[  {event.event_type}  ]</div>
-                <h3>{event.name}</h3>
-                <p>{event.description}</p>
-                <div class="date-time-speakers">
-                    <div><span id="heading">Date: </span>{event.date}&emsp;</div>
-                    <div><span id="heading">Time: </span>{event.start_time} to {event.end_time}</div>
-                    {speakers.length > 0 ? <div><span id="heading">Speakers: </span>{speakers}</div> : <div></div>}
+        <div className="event-card" key={"event-" + eventKey} id={"event-" + eventKey}>
+            <div className="event-type" id={eventTypeId}>[  {event_type}  ]</div>
+            <h3>{event.name}</h3>
+            <p className="space">{event.description}</p>
+            <div className="event-info">
+                <div className="date-time-speakers">
+                    <div><span className="heading">Date: </span>{event.date}&emsp;</div>
+                    <div><span className="heading">Time: </span>{event.start_time} to {event.end_time}</div>
+                    {speakers.length > 0 ? <div><span className="heading">Speakers: </span>{speakers}</div> : ''}
                 </div>
-                {event.public_url ? <a href={event.public_url}><span class="link"></span></a> : <span></span>}
+                {event.public_url !== "" ? <span><a className="link" href={event.public_url}>View Recording</a></span> : ''}
+                {event.private_url ? <button className="private-link-button"><a className="private-link" href={event.private_url}>Go to event</a></button> : ''}
+                {event.related_events.length > 0 ? <span className="heading">Related events:</span> : ''}
+                <div className="related-events">
+                    {event.related_events.map((item, i) => {
+                        return (
+                            <RelatedEvent relatedEvt={item} key={i} />
+                        );
+                    })}
+                </div>
             </div>
-        </>
+        </div>
     );
 }
