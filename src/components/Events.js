@@ -12,7 +12,7 @@ function Events(props) {
     useEffect(() => {
         axios.get("https://api.hackthenorth.com/v3/events").then((data) => {
             // console.log(data);
-            setEvents(organizeEvents(data?.data));
+            setEvents(organizeEvents(data?.data, true));
         });
     }, []);
 
@@ -37,13 +37,26 @@ const convertTime = (unixTimestamp) => {
     return { date: moment(t).format('ll'), time: moment(t).format('h:mm A') };
 };
 
+// Convert to all times in events to datetime
+
 // Use this function to organize list of events in order by start_time and add information for related events
 const organizeEvents = (events) => {
-    let organizedEvents = events.map((evt) => {
+    // Sort in ascending time (in ms)
+    const compareTime = (a, b) => {
+        if (a.end_time < b.end_time || (a.end_time === b.end_time && a.start_time > b.start_time))
+            return -1;
+        if (a.end_time > b.end_time || (a.end_time === b.end_time && a.start_time < b.start_time))
+            return 1;
+        return 0;
+    };
+
+    let organizedEvents = events.sort(compareTime);
+
+    organizedEvents = organizedEvents.map((evt) => {
         let relatedEvents =
             evt.related_events.map(
                 (relatedEvtID) => {
-                    let relatedEvt = events.find(evt => evt.id === relatedEvtID);
+                    let relatedEvt = organizedEvents.find(evt => evt.id === relatedEvtID);
                     return {
                         relatedEvtID: relatedEvtID,
                         relatedEvtName: relatedEvt.name,
@@ -63,8 +76,7 @@ const organizeEvents = (events) => {
             }
         };
     });
-    // For sorting, returning 1 means b takes precendence and -1 means a takes precedence
-    return organizedEvents.sort((a, b) => (a.start_time > b.start_time) ? 1 : -1);
+    return organizedEvents;
 };
 
 // Use this function to filter through events based on if user is authed

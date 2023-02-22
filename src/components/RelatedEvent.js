@@ -9,7 +9,7 @@ export default function RelatedEvent(item, key) {
 
     return (
         <Link to={'#event-' + relatedEvtID}>
-            <button class={"related-event " + relatedEvtType} key={"related-event-" + eventKey}>{relatedEvtName}</button>
+            <button className={"related-event " + relatedEvtType} key={"related-event-" + eventKey}>{relatedEvtName}</button>
         </Link>
     );
 }
